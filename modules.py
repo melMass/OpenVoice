@@ -1,15 +1,15 @@
 import math
+
 import torch
 from torch import nn
-from torch.nn import functional as F
-
 from torch.nn import Conv1d
-from torch.nn.utils import weight_norm, remove_weight_norm
+from torch.nn import functional as F
+from torch.nn.utils import remove_weight_norm, weight_norm
 
-import commons
-from commons import init_weights, get_padding
-from transforms import piecewise_rational_quadratic_transform
-from attentions import Encoder
+from . import commons
+from .attentions import Encoder
+from .commons import get_padding, init_weights
+from .transforms import piecewise_rational_quadratic_transform
 
 LRELU_SLOPE = 0.1
 
@@ -580,19 +580,19 @@ class TransformerCouplingLayer(nn.Module):
             x = torch.cat([x0, x1], 1)
             return x
 
-        x1, logabsdet = piecewise_rational_quadratic_transform(
-            x1,
-            unnormalized_widths,
-            unnormalized_heights,
-            unnormalized_derivatives,
-            inverse=reverse,
-            tails="linear",
-            tail_bound=self.tail_bound,
-        )
+        # x1, logabsdet = piecewise_rational_quadratic_transform(
+        #     x1,
+        #     unnormalized_widths,
+        #     unnormalized_heights,
+        #     unnormalized_derivatives,
+        #     inverse=reverse,
+        #     tails="linear",
+        #     tail_bound=self.tail_bound,
+        # )
 
-        x = torch.cat([x0, x1], 1) * x_mask
-        logdet = torch.sum(logabsdet * x_mask, [1, 2])
-        if not reverse:
-            return x, logdet
-        else:
-            return x
+        # x = torch.cat([x0, x1], 1) * x_mask
+        # logdet = torch.sum(logabsdet * x_mask, [1, 2])
+        # if not reverse:
+        #     return x, logdet
+        # else:
+        #     return x

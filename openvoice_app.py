@@ -1,11 +1,13 @@
-import os
-import torch
 import argparse
-import gradio as gr
+import os
 from zipfile import ZipFile
+
+import gradio as gr
 import langid
-import se_extractor
-from api import BaseSpeakerTTS, ToneColorConverter
+import torch
+
+from . import se_extractor
+from .api import BaseSpeakerTTS, ToneColorConverter
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--share", action='store_true', default=False, help="make link public")

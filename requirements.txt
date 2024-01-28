@@ -1,7 +1,7 @@
 librosa==0.9.1
 faster-whisper==0.9.0
 pydub==0.25.1
-wavmark==0.0.2
+wavmark==0.0.3
 numpy==1.22.0
 eng_to_ipa==0.0.2
 inflect==7.0.0
@@ -14,3 +14,7 @@ cn2an==0.5.22
 jieba==0.42.1
 gradio==3.48.0
 langid==1.1.6
+--index-url https://download.pytorch.org/whl/cu121
+torch==2.1.2+cu121
+torchvision==0.16.2+cu121
+torchaudio==2.1.2+cu121

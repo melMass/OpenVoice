@@ -1,14 +1,15 @@
-import torch
-import numpy as np
-import re
-import soundfile
-import utils
-import commons
 import os
+import re
+
 import librosa
-from text import text_to_sequence
-from mel_processing import spectrogram_torch
-from models import SynthesizerTrn
+import numpy as np
+import soundfile
+import torch
+
+from . import commons, utils
+from .mel_processing import spectrogram_torch
+from .models import SynthesizerTrn
+from .text import text_to_sequence
 
 
 class OpenVoiceBaseClass(object):

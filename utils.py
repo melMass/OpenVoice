@@ -1,5 +1,6 @@
-import re
 import json
+import re
+
 import numpy as np
 
 
@@ -14,7 +15,7 @@ def get_hparams_from_file(config_path):
 class HParams:
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
-            if type(v) == dict:
+            if isinstance(v, dict):
                 v = HParams(**v)
             self[k] = v
 

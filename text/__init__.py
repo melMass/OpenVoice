@@ -1,7 +1,6 @@
 """ from https://github.com/keithito/tacotron """
-from text import cleaners
-from text.symbols import symbols
-
+from . import cleaners
+from .symbols import language_tone_start_map, symbols
 
 # Mappings from symbol to numeric ID and vice versa:
 _symbol_to_id = {s: i for i, s in enumerate(symbols)}
@@ -43,7 +42,8 @@ def cleaned_text_to_sequence(cleaned_text, symbols):
 
 
 
-from text.symbols import language_tone_start_map
+
+
 def cleaned_text_to_sequence_vits2(cleaned_text, tones, language, symbols, languages):
     """Converts a string of text to a sequence of IDs corresponding to the symbols in the text.
     Args:
